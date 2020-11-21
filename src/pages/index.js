@@ -5,7 +5,7 @@ import SearchInput from '../components/SearchInput/SearchInput';
 export default function Home({ countries }) {
   return (
     <Layout>
-      <div className={styles.counts}>Found {countries.length} countries</div>
+      <div className={styles.counts}>Found {countries.length} countriess</div>
 
       <SearchInput placeholder="Filter by Name, Region or SubRegion" />
     </Layout>
