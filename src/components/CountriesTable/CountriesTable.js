@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
 import {
   KeyboardArrowDownRounded,
-  KeyboardArrowUp,
   KeyboardArrowUpRounded,
 } from '@material-ui/icons';
 import styles from './CountriesTable.module.css';
 
-const orderBy = (countries, direction) => {
+const orderBy = (countries, value, direction) => {
   if (direction === 'asc') {
-    return [...countries].sort((a, b) =>
-      a.population > b.population ? 1 : -1
-    );
+    return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1));
   }
 
   if (direction === 'desc') {
-    return [...countries].sort((a, b) =>
-      a.population > b.population ? -1 : 1
-    );
+    return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1));
   }
 };
 
@@ -44,7 +39,7 @@ const CountriesTable = ({ countries }) => {
   const [direction, setDirection] = useState();
   const [value, setValue] = useState();
 
-  const orderedCountries = orderBy(countries, 'desc');
+  const orderedCountries = orderBy(countries, value, direction);
 
   const switchDirection = () => {
     if (!direction) {
